@@ -1,3 +1,7 @@
+@import 'swiper/css';
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import 'mapbox-gl/dist/mapbox-gl.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
