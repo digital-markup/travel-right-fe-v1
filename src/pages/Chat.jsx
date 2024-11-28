@@ -3,12 +3,14 @@ import ChatBubbleAssistant from "../components/chat-assistant";
 import ChatBubbleUser from "../components/chat-user";
 import Button from "../components/ui/button";
 import messageQueueProcess from "../actions/messageQueueProcess";
+import useJsonStore from "../store/useJsonStore";
 
 function Chat() {
   const [messages, setMessages] = React.useState([
     { role: "assistant", content: "Hello! How can I assist you today?" },
   ]);
   const [input, setInput] = React.useState("");
+  const { setLocations } = useJsonStore();
 
   const handleSend = (e) => {
     e.preventDefault();
@@ -19,9 +21,11 @@ function Chat() {
       setTimeout(() => {
         const answers = messageQueueProcess(input);
         answers.then((data) => {
+          setLocations(data.jsonData);
+
           setMessages((prev) => [
             ...prev,
-            { role: "assistant", content: `${data}` },
+            { role: "assistant", content: `${data.message}` },
           ]);
         });
       }, 1000);
