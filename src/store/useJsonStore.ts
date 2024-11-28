@@ -1,30 +1,15 @@
 import { create } from "zustand";
-import { v4 as uuidv4 } from "uuid";
 import { createJSONStorage, persist } from "zustand/middleware";
 
-type JsonStore = {
-    locations: string[];
-    setLocations: (newLocations: string[]) => void,
-    clearLocations: () => void,
-    getLocation: (key: string) => string[],
-    getLatestLocation: () => string,
-    key?: string
-}
+type JsonStore = { locations: any[], addLocation: (location: any) => void, getLocation: (key: string) => any };
 
-const useJsonStore = create(persist<JsonStore>(
-    (set, get) => ({
-        locations: [],
-        setLocations: (locations) => set({
-            locations,
-            key: uuidv4()
-        }),
-        getLocation: (key) => get().locations.filter((location) => location === key),
-        getLatestLocation: () => get().locations[get().locations.length - 1],
-        clearLocations: () => set({ locations: [] }),
-    }), {
-    name: "json-storage",
-    storage: createJSONStorage(() => sessionStorage)
-}
-));
+const useJsonStore = create(persist<JsonStore>((set, get) => ({
+    locations: [],
+    addLocation: (location: any) => { set((state: any) => ({ locations: [...state.locations, { key: location.key, location: [location.location] }] })) },
+    getLocation: (key: string) => { return get().locations.find((location: any) => location.key === key) },
+}), {
+    name: "locations-store",
+    storage: createJSONStorage(() => sessionStorage),
+}));
 
 export default useJsonStore

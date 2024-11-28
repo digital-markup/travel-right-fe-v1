@@ -10,7 +10,18 @@ function Chat() {
     { role: "assistant", content: "Hello! How can I assist you today?" },
   ]);
   const [input, setInput] = React.useState("");
-  const { setLocations } = useJsonStore();
+  const { addLocation } = useJsonStore();
+
+  const setMessageWithLocations = (data) => {
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: "assistant",
+        content: `${data.message}`,
+        key: data.key,
+      },
+    ]);
+  };
 
   const handleSend = (e) => {
     e.preventDefault();
@@ -21,12 +32,22 @@ function Chat() {
       setTimeout(() => {
         const answers = messageQueueProcess(input);
         answers.then((data) => {
-          setLocations(data.jsonData);
-
-          setMessages((prev) => [
-            ...prev,
-            { role: "assistant", content: `${data.message}` },
-          ]);
+          console.log(data);
+          if (Object.keys(data.jsonData).length === 0) {
+            setMessages((prev) => [
+              ...prev,
+              {
+                role: "assistant",
+                content: `${data.message}`,
+              },
+            ]);
+          } else {
+            addLocation({
+              key: data.key,
+              location: data.jsonData.location,
+            });
+            setMessageWithLocations(data);
+          }
         });
       }, 1000);
       setInput("");
