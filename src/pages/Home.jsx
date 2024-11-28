@@ -3,10 +3,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import HomeSlider from "../components/HomeSlider";
 import PlacesCard from "../components/ui/PlacesCard";
 import MapComponent from "../components/MapComponent";
+import FeaturesGrid from "../components/FeaturesGrid";
+import ProcessGrid from "../components/ProcessGrid";
 
 const Home = () => {
   return (
-    <div>
+    <div className="font-Popins">
       <HomeSlider />
       <div className="font-Beba relative">
         <h2 className="text-black text-[200px] opacity-10 text-center">
@@ -23,6 +25,7 @@ const Home = () => {
         </h2>
         <div>
           <Swiper
+          className="pb-5"
             spaceBetween={40}
             slidesPerView={4}
             onSlideChange={() => console.log("slide change")}
@@ -44,7 +47,21 @@ const Home = () => {
           Recommendations and Real-Time Assistance
         </h2>
       </div>
+
+      <div className="mt-10">
+        <h2 className="text-center text-4xl font-bold">Services We <span className="text-mainColor ">Provide</span></h2>
+        <FeaturesGrid/>
+      </div>
+
+      <div className="mt-10">
+        <h2 className="text-center text-4xl font-bold">Things You <span className="text-mainColor ">Need</span></h2>
+        <p className="text-center mt-2">We want to make sure your vacation is safe, well-planned, and within your budget.</p>
+        <ProcessGrid/>
+      </div>
       
+      <section>
+        <img src="" alt="" />
+      </section>
     </div>
   );
 };
