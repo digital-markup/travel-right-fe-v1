@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 const replaceJson = (text: string) => {
     // if no JSON block is found, return the original text
     if (!text.includes('```json')) {
@@ -19,7 +21,8 @@ const replaceJson = (text: string) => {
     // Return the message and the parsed JSON
     return {
         message,
-        jsonData: parsedJson
+        jsonData: parsedJson,
+        key: uuidv4()
     };
 };
 
