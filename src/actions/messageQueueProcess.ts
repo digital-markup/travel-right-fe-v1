@@ -1,15 +1,21 @@
 import getAnswersAsync from "../api/POST/getAnswersAsync"
+import replaceJson from "../services/replaceJsonData";
 import convertToMarkdown from "../services/toMarkdown";
 
-const messageQueueProcess = async (message: string) => {
+const messageQueueProcess = async (input: string) => {
     try {
         // pass the message to server and get the result
-        if (message) {
-            const response = await getAnswersAsync(message);
+        if (input) {
+            const response = await getAnswersAsync(input);
+            // remove json tag data
+            const { message, jsonData } = replaceJson(response);
             // pass this to the markdown function
-            const markdown = convertToMarkdown(response);
-            console.log(markdown);
-            return markdown
+            const markdown = convertToMarkdown(message);
+
+            return {
+                message: markdown,
+                jsonData: jsonData
+            }
         }
     } catch (error) {
         console.log(error);
