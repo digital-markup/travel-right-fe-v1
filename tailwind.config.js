@@ -2,7 +2,14 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        mainColor: "#2C5BEB",
+      },
+      fontFamily: {
+        Beba: ["Bebas Neue", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 };
