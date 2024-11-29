@@ -8,6 +8,7 @@ export default {
       },
       fontFamily: {
         Beba: ["Bebas Neue", "sans-serif"],
+        Popins:["Poppins", "sans-serif"],
       },
     },
   },

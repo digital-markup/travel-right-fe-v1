@@ -56,10 +56,7 @@ function Chat() {
 
   return (
     <main className="w-full min-h-screen">
-      <section className="flex flex-col gap-6 w-full h-screen">
-        <header className="flex w-full justify-between items-center pt-4">
-          <h2>Travel Right</h2>
-        </header>
+      <section className="flex flex-col gap-6 container m-auto rounded-lg mt-5 mb-5 w-full h-screen border-solid border-2 border-mainColor">
         <div className="w-full mt-5 flex flex-col flex-1 overflow-hidden overflow-y-scroll rounded">
           <div className="container mx-auto px-6">
             <div className="flex flex-col gap-y-3">
