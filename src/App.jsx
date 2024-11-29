@@ -20,6 +20,7 @@ function App() {
         <Route path="pricing" element={<Pricing />} />
       </Route>
       <Route path="/chat" element={<ChatLayout />}>
+        <Route index element={<Chat />} />
         <Route path="new" element={<Chat />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
