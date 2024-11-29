@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { twMerge } from "tailwind-merge";
 
-function Button({ title, className, type, onClick }) {
+function Button({ title, className, type, onClick, }) {
   return (
     <button
       type={type || "button"}
