@@ -1,6 +1,7 @@
 import getAnswersAsync from "../api/POST/getAnswersAsync"
 import replaceJson from "../services/replaceJsonData";
 import convertToMarkdown from "../services/toMarkdown";
+import { v4 as uuidv4 } from "uuid";
 
 const messageQueueProcess = async (input: string) => {
     try {
@@ -8,13 +9,14 @@ const messageQueueProcess = async (input: string) => {
         if (input) {
             const response = await getAnswersAsync(input);
             // remove json tag data
-            const { message, jsonData } = replaceJson(response);
+            const { message, jsonData, key } = replaceJson(response);
             // pass this to the markdown function
             const markdown = convertToMarkdown(message);
 
             return {
+                key,
                 message: markdown,
-                jsonData: jsonData
+                jsonData: jsonData,
             }
         }
     } catch (error) {

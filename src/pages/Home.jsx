@@ -1,8 +1,6 @@
-import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import HomeSlider from "../components/HomeSlider";
+import HomeSlider from "../components/home-slider";
 import PlacesCard from "../components/ui/PlacesCard";
-import MapComponent from "../components/MapComponent";
 import FeaturesGrid from "../components/FeaturesGrid";
 import ProcessGrid from "../components/ProcessGrid";
 import Button from "../components/ui/button";
