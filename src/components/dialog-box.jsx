@@ -47,10 +47,12 @@ function DialogBox({ locations }) {
       >
         <h2 className="text-xl font-semibold mb-8">Map</h2>
         <div className="max-w-screen-md h-full flex justify-center">
-          <MapComponent
-            startAddress={address.startAddress}
-            endAddress={address.endAddress}
-          />
+          {address.startAddress && address.endAddress ? (
+            <MapComponent
+              startAddress={address.startAddress}
+              endAddress={address.endAddress}
+            />
+          ) : null}
         </div>
       </Modal>
     </div>

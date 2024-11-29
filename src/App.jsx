@@ -15,15 +15,15 @@ function App() {
     <Routes>
       <Route path="/" element={<RootLayout />}>
         <Route index element={<Home />} />
-        <Route path="chat" element={<Chat />} />
         <Route path="about" element={<About />} />
         <Route path="product" element={<Product />} />
-        <Route path="pricing" element={<Pricing />} />ෆ
+        <Route path="pricing" element={<Pricing />} />
       </Route>
       <Route path="/chat" element={<ChatLayout />}>
         <Route path="new" element={<Chat />} />
       </Route>
       <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Dashboard />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="models" element={<Models />} />
       </Route>
