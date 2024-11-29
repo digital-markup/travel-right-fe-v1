@@ -94,7 +94,7 @@ const Home = () => {
                   description={
                     "The Nine Arch Bridge also called the Bridge in the Sky, is a viaduct bridge in Sri Lanka and one of the best examples of colonial-era railway construction in the country."
                   }
-                  image={""}
+                  image={"/home/9arch.jpeg"}
                 />
               }
             </SwiperSlide>

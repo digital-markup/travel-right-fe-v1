@@ -11,7 +11,7 @@ const PlacesCard = ({title,description,image}) => {
           <h2 className="text-2xl font-bold tracking-tight text-gray-900">
             {title}
           </h2>
-          <h3 className="text-xl font-semibold text-gray-700">Kandy</h3>
+          {/* <h3 className="text-xl font-semibold text-gray-700">Kandy</h3> */}
         </div>
         <p className="text-gray-600">
          {description}
