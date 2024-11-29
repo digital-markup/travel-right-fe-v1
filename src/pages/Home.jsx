@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import HomeSlider from "../components/home-slider";
 import PlacesCard from "../components/ui/PlacesCard";
 import FeaturesGrid from "../components/FeaturesGrid";
@@ -7,15 +8,11 @@ import Button from "../components/ui/button";
 import { useNavigate } from "react-router";
 
 const Home = () => {
-
   const navigate = useNavigate();
 
-
-  const onClick = ()=>{
-    navigate("/product")
-  }
-
-
+  const onClick = () => {
+    navigate("/product");
+  };
 
   return (
     <div className="font-Popins">
@@ -37,16 +34,70 @@ const Home = () => {
           <Swiper
             className="pb-5"
             spaceBetween={40}
-            slidesPerView={4}
+            slidesPerView={3}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay]}
             onSlideChange={() => console.log("slide change")}
             onSwiper={(swiper) => console.log(swiper)}
           >
-            <SwiperSlide>{<PlacesCard />}</SwiperSlide>
-            <SwiperSlide>{<PlacesCard />}</SwiperSlide>
-            <SwiperSlide>{<PlacesCard />}</SwiperSlide>
-            <SwiperSlide>{<PlacesCard />}</SwiperSlide>
-            <SwiperSlide>{<PlacesCard />}</SwiperSlide>
-            <SwiperSlide>{<PlacesCard />}</SwiperSlide>
+            <SwiperSlide>
+              {
+                <PlacesCard
+                  title={"Temple of the Tooth"}
+                  description={
+                    "Gautama Buddha's left canine tooth is housed in the Temple of the Sacred Tooth Relic, a recognised site of worship. The temple was designated a world heritage site by UNESCO in 1988, and hundreds of local and foreign tourists and devotees visit it every day."
+                  }
+                  image={"/home/maligawa.jpeg"}
+                />
+              }
+            </SwiperSlide>
+            <SwiperSlide>
+              {
+                <PlacesCard
+                  title={"Ruwanweli Maha Seya"}
+                  description={
+                    "Ruwanweli Maha Seya (Ruwanweliseya) is one of the most venerated Buddhist sites in Sri Lanka built by the great king Dutugamunu who reigned from 137 BCE to 119 BCE from Anuradhapura."
+                  }
+                  image={"/home/ruwn.jpeg"}
+                />
+              }
+            </SwiperSlide>
+            <SwiperSlide>
+              {
+                <PlacesCard
+                  title={"Nine Arches Bridge"}
+                  description={
+                    "The Nine Arch Bridge also called the Bridge in the Sky, is a viaduct bridge in Sri Lanka and one of the best examples of colonial-era railway construction in the country."
+                  }
+                  image={"/home/9arch.jpeg"}
+                />
+              }
+            </SwiperSlide>
+            <SwiperSlide>
+              {
+                <PlacesCard
+                  title={"Sigiriya"}
+                  description={
+                    "Sigiriya was designated as a world heritage site in 1982. Sigiriya is famous for it's palace ruins on top of a massive 200 meter high rock surrounded by the remains of an extensive network of gardens, reservoirs and other structures. "
+                  }
+                  image={"/home/sigiri.jpeg"}
+                />
+              }
+            </SwiperSlide>
+            <SwiperSlide>
+              {
+                <PlacesCard
+                  title={"Nine Arches Bridge"}
+                  description={
+                    "The Nine Arch Bridge also called the Bridge in the Sky, is a viaduct bridge in Sri Lanka and one of the best examples of colonial-era railway construction in the country."
+                  }
+                  image={""}
+                />
+              }
+            </SwiperSlide>
           </Swiper>
         </div>
       </div>

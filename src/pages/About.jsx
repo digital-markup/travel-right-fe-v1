@@ -34,13 +34,13 @@ function About() {
         </div>
 
         {/* Values */}
-        <div className="w-full md:w-1/2">
-          <h2 className="text-lg uppercase tracking-wider mb-4">OUR VALUES</h2>
+        <div className="w-full md:w-1/2 font-Popins">
+          <h2 className="text-4xl uppercase tracking-wider mb-4">OUR VALUES</h2>
           <ul className="space-y-2">
-            <li className="text-3xl font-serif">Innovation.</li>
-            <li className="text-3xl font-serif">Simplicity.</li>
-            <li className="text-3xl font-serif">Reliability.</li>
-            <li className="text-3xl font-serif">Exploration.</li>
+            <li className="text-3xl ">Innovation.</li>
+            <li className="text-3xl ">Simplicity.</li>
+            <li className="text-3xl ">Reliability.</li>
+            <li className="text-3xl ">Exploration.</li>
           </ul>
         </div>
       </div>
@@ -49,8 +49,8 @@ function About() {
       <div className="flex flex-col md:flex-row justify-between items-center gap-12">
         {/* Mission */}
         <div className="w-full md:w-1/2">
-          <h2 className="text-lg uppercase tracking-wider mb-4">OUR MISSION</h2>
-          <p className="text-3xl font-serif leading-snug">
+          <h2 className="text-4xl uppercase tracking-wider mb-4">OUR MISSION</h2>
+          <p className="text-3xl  leading-snug">
             To revolutionize travel by providing personalized, innovative
             experiences that inspire exploration of Sri Lanka's beauty.
           </p>
@@ -59,7 +59,7 @@ function About() {
         {/* Logo */}
         <div className="w-full md:w-1/2 flex justify-center">
           <img
-            src="/placeholder.svg?height=200&width=200"
+            src="/logo-tp.png"
             alt="Visit Lanka Logo"
             className="w-48 h-auto"
           />
