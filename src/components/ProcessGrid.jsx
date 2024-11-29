@@ -28,13 +28,13 @@ const ProcessGrid = () => {
         {features.map((feature, index) => (
           <div
             key={index}
-            className="relative p-6 bg-white rounded-xl border bg-mainColor border-blue-500 shadow-sm hover:shadow-md transition-shadow"
+            className="relative p-6  rounded-xl border bg-mainColor border-blue-500 shadow-sm hover:shadow-md transition-shadow"
           >
             <div className="mb-4">
               <feature.icon className="h-8 w-8 text-white" />
             </div>
             <h3 className="text-lg font-bold mb-2 text-white">{feature.title}</h3>
-            <p className="text-gray-600 text-sm text-white">{feature.description}</p>
+            <p className=" text-sm text-white">{feature.description}</p>
           </div>
         ))}
       </div>

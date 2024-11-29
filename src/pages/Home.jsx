@@ -4,9 +4,19 @@ import PlacesCard from "../components/ui/PlacesCard";
 import FeaturesGrid from "../components/FeaturesGrid";
 import ProcessGrid from "../components/ProcessGrid";
 import Button from "../components/ui/button";
-import { MoveRight } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const Home = () => {
+
+  const navigate = useNavigate();
+
+
+  const onClick = ()=>{
+    navigate("/product")
+  }
+
+
+
   return (
     <div className="font-Popins">
       <HomeSlider />
@@ -72,7 +82,27 @@ const Home = () => {
           Get explanation. Track down locations. Increase your intelligence.
         </h2>
         <div className="flex justify-center mt-5  ">
-          <Button title="Start Now" />
+          <Button title="Start Now" onClick={onClick} />
+        </div>
+      </section>
+
+      <section className="my-20">
+        <h2 className="text-center text-4xl font-bold max-w-xl m-auto">
+          We are partnered with
+        </h2>
+        <div className="flex justify-center items-center gap-10 mt-10">
+          <div className="h-[100px]">
+            <img src="/partners/a.jpeg" alt="" className="w-full h-full" />
+          </div>
+          <div className="h-[100px]">
+            <img src="/partners/b.png" alt="" className="w-full h-full" />
+          </div>
+          <div className="h-[100px]">
+            <img src="/partners/c.png" alt="" className="w-full h-full" />
+          </div>
+          <div className="h-[100px]">
+            <img src="/partners/d.jpeg" alt="" className="w-full h-full" />
+          </div>
         </div>
       </section>
     </div>

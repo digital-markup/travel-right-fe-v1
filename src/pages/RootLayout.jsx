@@ -1,13 +1,14 @@
 import { Link, Outlet } from "react-router";
 import Button from "../components/ui/button";
+import Footer from "../components/footer";
 
 function RootLayout() {
   return (
     <div >
-      <div className="container m-auto">
-        <nav className="w-full h-14 flex justify-between items-center shadow-md px-8 md:px-0">
+      <div className="shadow-md font-Popins">
+        <nav className="container m-auto w-full h-20 flex justify-between items-center px-8 md:px-0">
           <h2 className="md:mx-8 text-lg">
-            <Link to="/">Travel Right</Link>
+            <Link className="flex justify-center items-center"  to="/"><img src="/logo-tp.png" className="w-[80px] h-full" alt="" /><span className="font-bold text-mainColor text-xl">Travel Right</span></Link>
           </h2>
           <ul className="flex items-center  gap-x-4 px-8">
             <li>
@@ -27,6 +28,7 @@ function RootLayout() {
       </div>
       <main>
         <Outlet />
+       <Footer/>
       </main>
     </div>
   );
