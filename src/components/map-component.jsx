@@ -33,7 +33,6 @@ const MapComponent = ({ startAddress, endAddress }) => {
             },
           }
         );
-        console.log(startLocation.data.results[0].geometry);
         return {
           departure: startLocation.data.results[0].geometry.location,
           destination: endLocation.data.results[0].geometry.location,
