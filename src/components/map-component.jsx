@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
-import React, { useRef, useState, useCallback } from 'react';
-import axios from 'axios';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import React, { useRef, useState, useCallback } from "react";
+import axios from "axios";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
+import getLocationProcess from "../actions/getLocationProcess";
 
 const MapComponent = ({ startAddress, endAddress }) => {
   const mapContainerRef = useRef(null);
@@ -13,33 +14,9 @@ const MapComponent = ({ startAddress, endAddress }) => {
   // Fetch base locations
   const onFetchLocations = useCallback(() => {
     const findLocations = async (startAddress, endAddress) => {
-      try {
-        const startLocation = await axios.get(
-          "https://maps.googleapis.com/maps/api/geocode/json",
-          {
-            params: {
-              address: `${startAddress}, Sri Lanka`,
-              key: import.meta.env.VITE_GOOGLE_MAP_KEY,
-            },
-          }
-        );
-
-        const endLocation = await axios.get(
-          "https://maps.googleapis.com/maps/api/geocode/json",
-          {
-            params: {
-              address: `${endAddress}, Sri Lanka`,
-              key: import.meta.env.VITE_GOOGLE_MAP_KEY,
-            },
-          }
-        );
-        console.log(startLocation.data.results[0].geometry);
-        return {
-          departure: startLocation.data.results[0].geometry.location,
-          destination: endLocation.data.results[0].geometry.location,
-        };
-      } catch (error) {
-        console.error("Error fetching geocode:", error);
+      const response = await getLocationProcess(startAddress, endAddress);
+      if (response !== undefined) {
+        return response;
       }
     };
 
@@ -54,16 +31,16 @@ const MapComponent = ({ startAddress, endAddress }) => {
 
   const addMarkers = React.useCallback((map, start, end) => {
     // Remove existing markers if any
-    const existingMarkers = document.querySelectorAll('.mapboxgl-marker');
-    existingMarkers.forEach(marker => marker.remove());
+    const existingMarkers = document.querySelectorAll(".mapboxgl-marker");
+    existingMarkers.forEach((marker) => marker.remove());
 
     // Add start marker
-    new mapboxgl.Marker({ color: 'red' })
+    new mapboxgl.Marker({ color: "red" })
       .setLngLat([start.lng, start.lat])
       .addTo(map);
 
     // Add end marker
-    new mapboxgl.Marker({ color: 'green' })
+    new mapboxgl.Marker({ color: "green" })
       .setLngLat([end.lng, end.lat])
       .addTo(map);
 
@@ -105,33 +82,33 @@ const MapComponent = ({ startAddress, endAddress }) => {
       addMarkers(map, start, end);
 
       // Remove existing route source and layer if they exist
-      if (map.getSource('route')) {
-        map.removeLayer('route');
-        map.removeSource('route');
+      if (map.getSource("route")) {
+        map.removeLayer("route");
+        map.removeSource("route");
       }
 
       // Add new route source and layer
-      map.addSource('route', {
-        type: 'geojson',
+      map.addSource("route", {
+        type: "geojson",
         data: {
-          type: 'Feature',
+          type: "Feature",
           properties: {},
           geometry: data,
         },
       });
 
       map.addLayer({
-        id: 'route',
-        type: 'line',
-        source: 'route',
+        id: "route",
+        type: "line",
+        source: "route",
         layout: {
-          'line-join': 'round',
-          'line-cap': 'round',
+          "line-join": "round",
+          "line-cap": "round",
         },
         paint: {
-          'line-color': 'blue',
-          'line-width': 6,
-          'line-opacity': 0.8,
+          "line-color": "blue",
+          "line-width": 6,
+          "line-opacity": 0.8,
         },
       });
     });
@@ -144,7 +121,7 @@ const MapComponent = ({ startAddress, endAddress }) => {
     // Initialize the map and set the container to mapContainerRef.current
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: 'mapbox://styles/mapbox/outdoors-v12',
+      style: "mapbox://styles/mapbox/outdoors-v12",
       center: [80.64134645286987, 7.293747339023006],
       zoom: 15.5,
       pitch: 45,
@@ -156,7 +133,7 @@ const MapComponent = ({ startAddress, endAddress }) => {
     mapRef.current = map;
 
     // Wait for the map style to load before calling other functions
-    map.on('style.load', () => {
+    map.on("style.load", () => {
       onFetchLocations();
     });
 
@@ -173,7 +150,7 @@ const MapComponent = ({ startAddress, endAddress }) => {
 
   return (
     <div className="min-w-[700px] h-[500px] rounded-2xl overflow-hidden flex justify-center">
-      <div ref={mapContainerRef} style={{ height: '100%', width: '100%' }} />
+      <div ref={mapContainerRef} style={{ height: "100%", width: "100%" }} />
     </div>
   );
 };
