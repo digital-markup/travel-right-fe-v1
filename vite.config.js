@@ -7,6 +7,10 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": "/src",
+      process: "process/browser",
+      stream: "stream-browserify",
+      zlib: "browserify-zlib",
+      util: "util",
     },
   },
 });
